@@ -1,7 +1,6 @@
 ##
 
 ```
- 204  kubectl get cluster-info
   205  kubectl cluster-info
   206  kubectl api-versions
   207  kubectl api-resources

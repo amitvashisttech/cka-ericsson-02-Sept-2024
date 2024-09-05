@@ -60,3 +60,16 @@ cd ..
 kubectl delete -f 09-Namespaces/
 ```
 
+### In Case NameSpace Stuck in Terminating State for a long time, then we remove the finalizer & patch the namespace for clean disposal. 
+```
+root@master:~# kubectl  get ns | grep -i Terminating
+myspace           Terminating   60m
+root@master:~#
+```
+
+```
+apt install jq -y 
+```
+```
+kubectl get namespace <namespacename> -o json | jq '.spec.finalizers=[]' | kubectl replace --raw /api/v1/namespaces/<namespacename>/finalize -f -
+```

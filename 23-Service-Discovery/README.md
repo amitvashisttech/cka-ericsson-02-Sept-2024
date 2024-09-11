@@ -39,6 +39,11 @@
 
 
   198  kubectl  exec -it database -- mysql -u root -p
+       > show databases;
+       > use helloworld
+       > show tables; 
+       > select * from visits; 
+       > exit
   199  kubectl  get pods
   200  kubectl  get svc
   201  kubectl  exec -it busybox -- nslookup database-service

@@ -6,12 +6,11 @@ metadata:
 spec:
   ports:
   - port: 31007
-    nodePort: 31007
     targetPort: myapp-port
     protocol: TCP
   selector:
     app: python-webapp
-  type: NodePort
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment

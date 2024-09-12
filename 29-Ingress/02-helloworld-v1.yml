@@ -26,10 +26,9 @@ kind: Service
 metadata:
   name: helloworld-v1
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
   - port: 80
-    nodePort: 30303
     targetPort: 3000
     protocol: TCP
     name: http

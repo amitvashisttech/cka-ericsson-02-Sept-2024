@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green
+  labels:
+    app: green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: green
+  template:
+    metadata:
+      labels:
+        app: green
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - name: k8s-demo
+        image: amitvashist7/my-colorful-nginx-app1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: node-port
+          containerPort: 80

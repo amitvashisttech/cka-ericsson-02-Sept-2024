@@ -1,0 +1,11 @@
+
+  846  kubectl  describe svc blue-green-svc
+  847  kubectl patch service blue-green-svc -p '{"spec":{"selector":{"app":"blue"}}}' --dry-run
+  848  kubectl patch service blue-green-svc -p '{"spec":{"selector":{"app":"blue"}}}'
+  849  kubectl  describe svc blue-green-svc
+  850  kubectl patch service blue-green-svc -p '{"spec":{"selector":{"app":"green"}}}'
+  851  kubectl  describe svc blue-green-svc
+  852  curl http://172.31.0.100:31001/app1/index.html
+  853  kubectl patch service blue-green-svc -p '{"spec":{"selector":{"app":"blue"}}}'
+  854  curl http://172.31.0.100:31001/app2/index.html
+  855  curl http://172.31.0.100:31001/app1/index.html

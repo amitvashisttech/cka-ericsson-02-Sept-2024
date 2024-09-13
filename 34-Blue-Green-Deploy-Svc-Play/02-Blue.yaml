@@ -18,7 +18,7 @@ spec:
       - name: regcred
       containers:
       - name: k8s-demo
-        image: amitvashist7/my-colorful-nginx-app
+        image: amitvashist7/my-colorful-nginx-app2
         imagePullPolicy: IfNotPresent
         ports:
         - name: node-port

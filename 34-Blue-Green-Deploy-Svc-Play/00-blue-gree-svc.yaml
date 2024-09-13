@@ -9,5 +9,5 @@ spec:
     targetPort: node-port
     protocol: TCP
   selector:
-    app: blue
+    app: green
   type: NodePort

@@ -24,6 +24,15 @@ kubectl get svc -n kubernetes-dashboard
 
 ### Now try to open dashbaord url in the browser : https://NodeIP:NodePort
 
+### In Case Above NodePort is not reachable due to any reason the please try the below methord
+```
+kubectl proxy --address='172.31.0.100' --port=8001 --accept-hosts='.' --accept-paths='.' &
+```
+
+### Open the URL Like below
+```
+http://172.31.0.100:8001//api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+```
 
 ### Genrate Admin Token to Authenticate with K8s Dashboard
 ```

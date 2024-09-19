@@ -1,0 +1,36 @@
+replicaCount: 4
+image:
+  repository: amitvashist7/k8s-tiny-web
+  pullPolicy: IfNotPresent
+  tag: "4"
+service:
+  type: NodePort
+  port: 80
+
+
+nginx: 
+  replicaCount: 4
+  service:
+    type: LoadBalancer
+  ingress:
+    enabled: true
+    hostname: nginx.local
+    path: /
+    annotations: 
+      ingress.kubernetes.io/rewrite-target: /
+
+nginx: 
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  autoscaling:
+    enabled: enabled
+    minReplicas: 1
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 80
+
+

@@ -124,7 +124,7 @@ kubectl apply -f calico.yaml
 ## Join other nodes to the cluster (kmaster2, kmaster3, kworker1 & kworker2 )
 -  Use the respective kubeadm join commands you copied from the output of kubeadm init command on the first master.
 
-- **IMPORTANT:** You also need to apend your token with --apiserver-advertise-address to the join cluster as another master node.
+- IMPORTANT: You also need to apend your token with --apiserver-advertise-address to the join cluster as another master node.
 
 ## Downloading kube config to your local machine
 On your host machine

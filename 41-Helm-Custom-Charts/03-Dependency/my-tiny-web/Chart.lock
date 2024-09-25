@@ -1,0 +1,6 @@
+dependencies:
+- name: nginx
+  repository: https://marketplace.azurecr.io/helm/v1/repo
+  version: 13.2.12
+digest: sha256:07571e626d4ad9ad61b172b9f3b7eb7b44dd03db9f989f81cd3a3949733c8f55
+generated: "2024-09-19T03:58:59.306862954Z"

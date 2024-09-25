@@ -1,0 +1,7 @@
+resources:
+  - 01-NameSpace.yaml
+  - 02-Rbac.yaml
+  - 03-deployment.yaml
+  - 04-Class.yaml
+  - 05-Test-claim.yaml
+  - 06-Test-pod.yaml

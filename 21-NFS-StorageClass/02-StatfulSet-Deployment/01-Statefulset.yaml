@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+  labels:
+    app: web
+spec:
+  serviceName: "nginx"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: nfs-storage
+          mountPath: /usr/share/nginx/html
+        # Command to generate unique data (pod name and timestamp)
+        command: ["/bin/bash"]
+        args:
+          - "-c"
+          - |
+            POD_NAME=$(hostname)
+            TIMESTAMP=$(date)
+            echo "Pod Name: $POD_NAME" > /usr/share/nginx/html/index.html
+            echo "Timestamp: $TIMESTAMP" >> /usr/share/nginx/html/index.html
+            nginx -g 'daemon off;'
+  volumeClaimTemplates:
+  - metadata:
+      name: nfs-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "nfs-sc"
+      resources:
+        requests:
+          storage: 2Gi
+
